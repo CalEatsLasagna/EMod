@@ -8,7 +8,12 @@ namespace EMod.Items
 {
 	public class FlashBangItem : ModItem
     {
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+			DisplayName.SetDefault("Flash Bang");
+			Tooltip.SetDefault("think fast chucklenuts");
+        }
+        public override void SetDefaults()
 		{
 			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.shootSpeed = 12f;
