@@ -4,11 +4,14 @@ using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria;
+using Terraria.Localization;
 
 namespace EMod
 {
 	public class EMod : Mod
 	{
+		public const string RecipeGroup_HmBars_Tier2 = "EMod: Mythril/Orichalcum Bars";
+
 		public override void Load()
 		{
 			if (Main.netMode != NetmodeID.Server)
@@ -20,5 +23,13 @@ namespace EMod
 			}
 
 		}
+
+		public override void AddRecipeGroups()
+		{
+			RegisterRecipeGroup(RecipeGroup_HmBars_Tier2, ItemID.MythrilBar, new int[]{ ItemID.MythrilBar, ItemID.OrichalcumBar });
+		}
+
+		private static void RegisterRecipeGroup(string groupName, int itemForAnyName, int[] validTypes)
+			=> RecipeGroup.RegisterGroup(groupName, new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(itemForAnyName)}", validTypes));
 	}
 }
